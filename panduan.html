@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SawitCatat - Panduan Penggunaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sawit-green': '#2E7D32',
+                        'sawit-yellow': '#FFD600',
+                    }
+                },
+                fontFamily: {
+                    'sans': ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-sans pb-16">
+    <!-- Header -->
+    <header class="bg-white shadow-sm p-4 flex items-center justify-center sticky top-0 z-10">
+        <div class="flex items-center">
+            <img src="images/logo.png" alt="SawitCatat Logo" class="h-10 mr-2">
+            <h1 class="text-sawit-green text-xl font-bold">SawitCatat</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Judul dengan Ikon -->
+        <div class="flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sawit-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <h2 class="text-xl font-semibold text-sawit-green">Panduan Penggunaan</h2>
+        </div>
+
+        <!-- Panduan Step-by-Step -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+            <!-- Step 1 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-sawit-green text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                        1
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-900 mb-1">Catat Hasil Panen</h3>
+                        <p class="text-gray-600 text-sm">
+                            Buka halaman "Catat" dari menu navigasi, lalu masukkan jumlah tandan dan pilih lokasi blok panen. Tekan tombol "Simpan Data Panen" untuk menyimpan data.
+                        </p>
+                        <div class="mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-sawit-green text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                        2
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-900 mb-1">Lihat Statistik Harian</h3>
+                        <p class="text-gray-600 text-sm">
+                            Buka halaman "Beranda" untuk melihat total panen hari ini dan statistik mingguan secara ringkas. Data akan otomatis diperbarui.
+                        </p>
+                        <div class="mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-sawit-green text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                        3
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-900 mb-1">Periksa Riwayat Panen</h3>
+                        <p class="text-gray-600 text-sm">
+                            Buka halaman "Riwayat" untuk melihat catatan panen sebelumnya. Data dikelompokkan berdasarkan hari untuk memudahkan pencarian.
+                        </p>
+                        <div class="mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="p-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-sawit-green text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                        4
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-900 mb-1">Hubungi Admin</h3>
+                        <p class="text-gray-600 text-sm">
+                            Jika Anda mengalami kendala atau memiliki pertanyaan seputar penggunaan aplikasi, silakan hubungi admin melalui tombol di bawah.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Hubungi Admin -->
+        <a href="#" class="block bg-sawit-yellow hover:bg-yellow-500 text-sawit-green font-medium py-3 px-4 rounded-lg transition duration-200 text-center flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            Hubungi Admin
+        </a>
+    </main>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
+        <div class="flex justify-around">
+            <a href="index.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-xs">Beranda</span>
+            </a>
+            <a href="catat.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+                <span class="text-xs">Catat</span>
+            </a>
+            <a href="riwayat.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs">Riwayat</span>
+            </a>
+            <a href="panduan.html" class="flex-1 py-3 flex flex-col items-center justify-center text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs">Info</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SawitCatat - Riwayat Panen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sawit-green': '#2E7D32',
+                        'sawit-yellow': '#FFD600',
+                    }
+                },
+                fontFamily: {
+                    'sans': ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-sans pb-16">
+    <!-- Header -->
+    <header class="bg-white shadow-sm p-4 flex items-center justify-center sticky top-0 z-10">
+        <div class="flex items-center">
+            <img src="images/logo.png" alt="SawitCatat Logo" class="h-10 mr-2">
+            <h1 class="text-sawit-green text-xl font-bold">SawitCatat</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Judul dengan Ikon Kalender -->
+        <div class="flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sawit-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <h2 class="text-xl font-semibold text-sawit-green">Riwayat Panen</h2>
+        </div>
+
+        <!-- Daftar Riwayat Panen -->
+        <div class="mb-6">
+            <!-- Hari ini -->
+            <div class="mb-4">
+                <div class="text-sm font-medium text-gray-500 mb-2">Hari Ini</div>
+                <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
+                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">15 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok A</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">09:45</div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">9 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok C</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">07:30</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kemarin -->
+            <div class="mb-4">
+                <div class="text-sm font-medium text-gray-500 mb-2">Kemarin</div>
+                <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
+                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">20 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok B</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">16:15</div>
+                    </div>
+                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">7 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok A</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">11:20</div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">12 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok D</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">08:45</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 Hari Lalu -->
+            <div class="mb-4">
+                <div class="text-sm font-medium text-gray-500 mb-2">2 Hari Lalu</div>
+                <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
+                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">18 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok C</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">14:30</div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="mr-4 text-sawit-green font-semibold">11 TBS</div>
+                            <div class="text-gray-600 text-sm">Blok B</div>
+                        </div>
+                        <div class="text-gray-400 text-sm">09:15</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lihat Selengkapnya -->
+            <button class="w-full py-3 text-sawit-green font-medium flex items-center justify-center border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+                Lihat Riwayat Sebelumnya
+            </button>
+        </div>
+    </main>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
+        <div class="flex justify-around">
+            <a href="index.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-xs">Beranda</span>
+            </a>
+            <a href="catat.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+                <span class="text-xs">Catat</span>
+            </a>
+            <a href="riwayat.html" class="flex-1 py-3 flex flex-col items-center justify-center text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs">Riwayat</span>
+            </a>
+            <a href="panduan.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs">Info</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
