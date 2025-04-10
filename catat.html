@@ -23,7 +23,7 @@
 </head>
 <body class="bg-white font-sans">
     <!-- Header -->
-    <header class="bg-white shadow-sm p-4 flex items-center justify-center">
+    <header class="bg-white shadow-sm p-4 flex items-center justify-center md:justify-start md:px-8 lg:px-16">
         <div class="flex items-center">
             <img src="images/logo.png" alt="SawitCatat Logo" class="h-10 mr-2">
             <h1 class="text-sawit-green text-xl font-bold">SawitCatat</h1>
@@ -31,59 +31,121 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6 max-w-md">
-        <!-- Ilustrasi Keranjang Sawit -->
-        <div class="flex justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-sawit-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        </div>
-        
-        <!-- Form Input Panen -->
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-xl font-semibold text-sawit-green mb-4">Catat Panen</h2>
-            
-            <form id="formPanen">
-                <!-- Jumlah Tandan -->
-                <div class="mb-4">
-                    <label for="jumlahTandan" class="block text-sm font-medium text-gray-700 mb-1">Jumlah Tandan</label>
-                    <div class="relative">
-                        <input type="number" id="jumlahTandan" name="jumlahTandan" min="1" 
-                               class="block w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sawit-green focus:border-sawit-green text-lg font-medium"
-                               placeholder="0" required>
+    <main class="container mx-auto px-4 py-6 max-w-md md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
+        <div class="md:grid md:grid-cols-5 md:gap-8">
+            <!-- Left Column (Desktop): Illustration -->
+            <div class="hidden md:flex md:col-span-2 justify-center items-start">
+                <div class="sticky top-24">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-48 w-48 text-sawit-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <div class="mt-8 bg-gray-50 p-6 rounded-lg max-w-md">
+                        <h3 class="text-lg font-semibold text-sawit-green mb-3">Tips Pencatatan:</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sawit-green mr-2 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Pastikan jumlah tandan dihitung dengan teliti</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sawit-green mr-2 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Pilih lokasi blok yang sesuai dengan area panen</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-sawit-green mr-2 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Catat segera setelah proses panen selesai</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Right Column (Desktop) / Main Column (Mobile): Form -->
+            <div class="md:col-span-3">
+                <!-- Ilustrasi Keranjang Sawit (Mobile Only) -->
+                <div class="flex justify-center mb-6 md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-sawit-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
                 
-                <!-- Lokasi (Blok Panen) -->
-                <div class="mb-6">
-                    <label for="lokasi" class="block text-sm font-medium text-gray-700 mb-1">Lokasi (Blok Panen)</label>
-                    <div class="relative">
-                        <select id="lokasi" name="lokasi" 
-                                class="block w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sawit-green focus:border-sawit-green appearance-none text-gray-700"
-                                required>
-                            <option value="" disabled selected>Pilih lokasi</option>
-                            <option value="blok-a">Blok A</option>
-                            <option value="blok-b">Blok B</option>
-                            <option value="blok-c">Blok C</option>
-                            <option value="blok-d">Blok D</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                <!-- Form Input Panen -->
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6 md:p-8">
+                    <h2 class="text-xl font-semibold text-sawit-green mb-4 md:text-2xl">Catat Panen</h2>
+                    
+                    <form id="formPanen" class="md:max-w-xl">
+                        <!-- Jumlah Tandan -->
+                        <div class="mb-4">
+                            <label for="jumlahTandan" class="block text-sm font-medium text-gray-700 mb-1 md:text-base">Jumlah Tandan</label>
+                            <div class="relative">
+                                <input type="number" id="jumlahTandan" name="jumlahTandan" min="1" 
+                                       class="block w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sawit-green focus:border-sawit-green text-lg font-medium"
+                                       placeholder="0" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Lokasi (Blok Panen) -->
+                        <div class="mb-6">
+                            <label for="lokasi" class="block text-sm font-medium text-gray-700 mb-1 md:text-base">Lokasi (Blok Panen)</label>
+                            <div class="relative">
+                                <select id="lokasi" name="lokasi" 
+                                        class="block w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sawit-green focus:border-sawit-green appearance-none text-gray-700"
+                                        required>
+                                    <option value="" disabled selected>Pilih lokasi</option>
+                                    <option value="blok-a">Blok A</option>
+                                    <option value="blok-b">Blok B</option>
+                                    <option value="blok-c">Blok C</option>
+                                    <option value="blok-d">Blok D</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tombol Simpan -->
+                        <button type="button" onclick="simpanData()" 
+                                class="w-full bg-sawit-green hover:bg-green-800 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center md:text-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
+                            Simpan Data Panen
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Recent Activity (Desktop Only) -->
+                <div class="hidden md:block bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-sawit-green mb-3">Aktivitas Terakhir</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between border-b border-gray-100 pb-2">
+                            <div>
+                                <p class="font-medium">9 TBS - Blok C</p>
+                                <p class="text-xs text-gray-500">Hari ini, 07:30</p>
+                            </div>
+                            <span class="text-xs bg-green-100 text-sawit-green px-2 py-1 rounded flex items-center">
+                                Tersimpan
+                            </span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2">
+                            <div>
+                                <p class="font-medium">15 TBS - Blok A</p>
+                                <p class="text-xs text-gray-500">Hari ini, 09:45</p>
+                            </div>
+                            <span class="text-xs bg-green-100 text-sawit-green px-2 py-1 rounded flex items-center">
+                                Tersimpan
+                            </span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Tombol Simpan -->
-                <button type="button" onclick="simpanData()" 
-                        class="w-full bg-sawit-green hover:bg-green-800 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Simpan Data Panen
-                </button>
-            </form>
+            </div>
         </div>
     </main>
 
@@ -96,8 +158,8 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
-        <div class="flex justify-around">
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 md:px-8 lg:px-16">
+        <div class="flex justify-around max-w-screen-lg mx-auto">
             <a href="index.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />

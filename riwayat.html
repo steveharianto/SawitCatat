@@ -23,7 +23,7 @@
 </head>
 <body class="bg-white font-sans pb-16">
     <!-- Header -->
-    <header class="bg-white shadow-sm p-4 flex items-center justify-center sticky top-0 z-10">
+    <header class="bg-white shadow-sm p-4 flex items-center justify-center sticky top-0 z-10 md:justify-start md:px-8 lg:px-16">
         <div class="flex items-center">
             <img src="images/logo.png" alt="SawitCatat Logo" class="h-10 mr-2">
             <h1 class="text-sawit-green text-xl font-bold">SawitCatat</h1>
@@ -31,19 +31,39 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6 max-w-md">
+    <main class="container mx-auto px-4 py-6 max-w-md md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
         <!-- Judul dengan Ikon Kalender -->
-        <div class="flex items-center justify-center mb-6">
+        <div class="flex items-center justify-center mb-6 md:justify-start">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sawit-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-            <h2 class="text-xl font-semibold text-sawit-green">Riwayat Panen</h2>
+            <h2 class="text-xl font-semibold text-sawit-green md:text-2xl">Riwayat Panen</h2>
+        </div>
+
+        <!-- Desktop Stats Overview (Desktop Only) -->
+        <div class="hidden md:grid md:grid-cols-4 md:gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-green">
+                <h3 class="text-gray-600 text-sm mb-1">Total Minggu Ini</h3>
+                <p class="text-3xl font-bold text-sawit-green">92 <span class="text-lg">TBS</span></p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-yellow">
+                <h3 class="text-gray-600 text-sm mb-1">Total Bulan Ini</h3>
+                <p class="text-3xl font-bold text-sawit-yellow">378 <span class="text-lg">TBS</span></p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-green">
+                <h3 class="text-gray-600 text-sm mb-1">Rata-rata Harian</h3>
+                <p class="text-3xl font-bold text-sawit-green">18 <span class="text-lg">TBS</span></p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-yellow">
+                <h3 class="text-gray-600 text-sm mb-1">Lokasi Terbanyak</h3>
+                <p class="text-3xl font-bold text-sawit-yellow">Blok B</p>
+            </div>
         </div>
 
         <!-- Daftar Riwayat Panen -->
-        <div class="mb-6">
+        <div class="md:grid md:grid-cols-3 md:gap-6">
             <!-- Hari ini -->
-            <div class="mb-4">
+            <div class="mb-4 md:mb-0">
                 <div class="text-sm font-medium text-gray-500 mb-2">Hari Ini</div>
                 <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
                     <div class="p-4 border-b border-green-100 flex justify-between items-center">
@@ -64,7 +84,7 @@
             </div>
 
             <!-- Kemarin -->
-            <div class="mb-4">
+            <div class="mb-4 md:mb-0">
                 <div class="text-sm font-medium text-gray-500 mb-2">Kemarin</div>
                 <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
                     <div class="p-4 border-b border-green-100 flex justify-between items-center">
@@ -92,7 +112,7 @@
             </div>
 
             <!-- 2 Hari Lalu -->
-            <div class="mb-4">
+            <div class="mb-4 md:mb-0">
                 <div class="text-sm font-medium text-gray-500 mb-2">2 Hari Lalu</div>
                 <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
                     <div class="p-4 border-b border-green-100 flex justify-between items-center">
@@ -111,20 +131,100 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Lihat Selengkapnya -->
-            <button class="w-full py-3 text-sawit-green font-medium flex items-center justify-center border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <!-- Calendar View (Desktop Only) -->
+        <div class="hidden md:block bg-white rounded-lg shadow-md p-6 mt-6">
+            <h3 class="font-medium text-gray-700 mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-sawit-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                Lihat Riwayat Sebelumnya
+                Tampilan Kalender
+            </h3>
+            <div class="grid grid-cols-7 gap-1 text-center">
+                <div class="text-xs font-medium text-gray-500 py-1">Min</div>
+                <div class="text-xs font-medium text-gray-500 py-1">Sen</div>
+                <div class="text-xs font-medium text-gray-500 py-1">Sel</div>
+                <div class="text-xs font-medium text-gray-500 py-1">Rab</div>
+                <div class="text-xs font-medium text-gray-500 py-1">Kam</div>
+                <div class="text-xs font-medium text-gray-500 py-1">Jum</div>
+                <div class="text-xs font-medium text-gray-500 py-1">Sab</div>
+                
+                <!-- Calendar days (just a sample) -->
+                <div class="p-1 text-center text-gray-400 text-sm">28</div>
+                <div class="p-1 text-center text-gray-400 text-sm">29</div>
+                <div class="p-1 text-center text-gray-400 text-sm">30</div>
+                <div class="p-1 text-center text-gray-400 text-sm">31</div>
+                <div class="p-1 text-center text-sm">1</div>
+                <div class="p-1 text-center text-sm">2</div>
+                <div class="p-1 text-center text-sm">3</div>
+                
+                <div class="p-1 text-center text-sm">4</div>
+                <div class="p-1 text-center text-sm">5</div>
+                <div class="p-1 text-center text-sm">6</div>
+                <div class="p-1 text-center text-sm">7</div>
+                <div class="p-1 text-center text-sm">8</div>
+                <div class="p-1 text-center text-sm relative">
+                    9
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-1 bg-sawit-yellow rounded-full"></div>
+                </div>
+                <div class="p-1 text-center text-sm">10</div>
+                
+                <div class="p-1 text-center text-sm">11</div>
+                <div class="p-1 text-center text-sm relative">
+                    12
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-1 bg-sawit-yellow rounded-full"></div>
+                </div>
+                <div class="p-1 text-center text-sm relative">
+                    13
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-1 bg-sawit-green rounded-full"></div>
+                </div>
+                <div class="p-1 text-center text-sm relative">
+                    14
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-1 bg-sawit-green rounded-full"></div>
+                </div>
+                <div class="p-1 text-center bg-gray-100 rounded-lg font-medium relative">
+                    15
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-1 bg-sawit-green rounded-full"></div>
+                </div>
+                <div class="p-1 text-center text-sm">16</div>
+                <div class="p-1 text-center text-sm">17</div>
+            </div>
+            
+            <div class="flex justify-center mt-4 text-sm text-gray-500">
+                <div class="flex items-center mr-4">
+                    <div class="h-2 w-2 bg-sawit-green rounded-full mr-1"></div>
+                    <span>Panen &gt; 15 TBS</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="h-2 w-2 bg-sawit-yellow rounded-full mr-1"></div>
+                    <span>Panen &lt; 15 TBS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lihat Selengkapnya (Mobile Only) -->
+        <button class="w-full py-3 text-sawit-green font-medium flex items-center justify-center border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200 mt-6 md:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+            Lihat Riwayat Sebelumnya
+        </button>
+        
+        <!-- Load More (Desktop Only) -->
+        <div class="hidden md:flex justify-center mt-8">
+            <button class="bg-white text-sawit-green font-medium py-2 px-6 border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Muat Lebih Banyak
             </button>
         </div>
     </main>
 
     <!-- Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
-        <div class="flex justify-around">
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 md:px-8 lg:px-16">
+        <div class="flex justify-around max-w-screen-lg mx-auto">
             <a href="index.html" class="flex-1 py-3 flex flex-col items-center justify-center text-gray-500 hover:text-sawit-green">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
