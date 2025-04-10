@@ -44,93 +44,25 @@
         <div class="hidden md:grid md:grid-cols-4 md:gap-4 mb-6">
             <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-green">
                 <h3 class="text-gray-600 text-sm mb-1">Total Minggu Ini</h3>
-                <p class="text-3xl font-bold text-sawit-green">92 <span class="text-lg">TBS</span></p>
+                <p class="text-3xl font-bold text-sawit-green"><span id="totalMingguIni">0</span> <span class="text-lg">TBS</span></p>
             </div>
             <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-yellow">
                 <h3 class="text-gray-600 text-sm mb-1">Total Bulan Ini</h3>
-                <p class="text-3xl font-bold text-sawit-yellow">378 <span class="text-lg">TBS</span></p>
+                <p class="text-3xl font-bold text-sawit-yellow"><span id="totalBulanIni">0</span> <span class="text-lg">TBS</span></p>
             </div>
             <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-green">
                 <h3 class="text-gray-600 text-sm mb-1">Rata-rata Harian</h3>
-                <p class="text-3xl font-bold text-sawit-green">18 <span class="text-lg">TBS</span></p>
+                <p class="text-3xl font-bold text-sawit-green"><span id="rataHarian">0</span> <span class="text-lg">TBS</span></p>
             </div>
             <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-sawit-yellow">
                 <h3 class="text-gray-600 text-sm mb-1">Lokasi Terbanyak</h3>
-                <p class="text-3xl font-bold text-sawit-yellow">Blok B</p>
+                <p class="text-3xl font-bold text-sawit-yellow" id="lokasiTerbanyak">-</p>
             </div>
         </div>
 
         <!-- Daftar Riwayat Panen -->
-        <div class="md:grid md:grid-cols-3 md:gap-6">
-            <!-- Hari ini -->
-            <div class="mb-4 md:mb-0">
-                <div class="text-sm font-medium text-gray-500 mb-2">Hari Ini</div>
-                <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
-                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">15 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok A</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">09:45</div>
-                    </div>
-                    <div class="p-4 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">9 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok C</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">07:30</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kemarin -->
-            <div class="mb-4 md:mb-0">
-                <div class="text-sm font-medium text-gray-500 mb-2">Kemarin</div>
-                <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
-                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">20 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok B</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">16:15</div>
-                    </div>
-                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">7 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok A</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">11:20</div>
-                    </div>
-                    <div class="p-4 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">12 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok D</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">08:45</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2 Hari Lalu -->
-            <div class="mb-4 md:mb-0">
-                <div class="text-sm font-medium text-gray-500 mb-2">2 Hari Lalu</div>
-                <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
-                    <div class="p-4 border-b border-green-100 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">18 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok C</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">14:30</div>
-                    </div>
-                    <div class="p-4 flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="mr-4 text-sawit-green font-semibold">11 TBS</div>
-                            <div class="text-gray-600 text-sm">Blok B</div>
-                        </div>
-                        <div class="text-gray-400 text-sm">09:15</div>
-                    </div>
-                </div>
-            </div>
+        <div id="riwayatContainer" class="md:grid md:grid-cols-3 md:gap-6">
+            <!-- Riwayat panen akan diisi oleh JavaScript -->
         </div>
 
         <!-- Calendar View (Desktop Only) -->
@@ -150,7 +82,7 @@
                 <div class="text-xs font-medium text-gray-500 py-1">Jum</div>
                 <div class="text-xs font-medium text-gray-500 py-1">Sab</div>
                 
-                <!-- Calendar days (just a sample) -->
+                <!-- Calendar days (sample only - would be generated based on current month in production) -->
                 <div class="p-1 text-center text-gray-400 text-sm">28</div>
                 <div class="p-1 text-center text-gray-400 text-sm">29</div>
                 <div class="p-1 text-center text-gray-400 text-sm">30</div>
@@ -203,8 +135,8 @@
             </div>
         </div>
 
-        <!-- Lihat Selengkapnya (Mobile Only) -->
-        <button class="w-full py-3 text-sawit-green font-medium flex items-center justify-center border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200 mt-6 md:hidden">
+        <!-- Load More (Mobile Only) -->
+        <button id="loadMoreButton" class="w-full py-3 text-sawit-green font-medium flex items-center justify-center border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200 mt-6 md:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
@@ -213,7 +145,7 @@
         
         <!-- Load More (Desktop Only) -->
         <div class="hidden md:flex justify-center mt-8">
-            <button class="bg-white text-sawit-green font-medium py-2 px-6 border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200 flex items-center">
+            <button id="loadMoreDesktopButton" class="bg-white text-sawit-green font-medium py-2 px-6 border border-sawit-green rounded-lg hover:bg-green-50 transition duration-200 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
@@ -251,5 +183,317 @@
             </a>
         </div>
     </nav>
+
+    <script>
+        // Data model for the app
+        const sawitCatatApp = {
+            // Current page size and state
+            pageSize: 3, // Show 3 days at first
+            currentDisplayedDays: 0,
+            
+            // Initialize the app
+            init: function() {
+                // Load data from localStorage or initialize if not exists
+                this.loadData();
+                // Update UI with data
+                this.updateUI();
+                
+                // Set up event listeners
+                document.getElementById('loadMoreButton').addEventListener('click', () => {
+                    this.loadMoreEntries();
+                });
+                document.getElementById('loadMoreDesktopButton').addEventListener('click', () => {
+                    this.loadMoreEntries();
+                });
+            },
+
+            // Load data from localStorage
+            loadData: function() {
+                const storedData = localStorage.getItem('sawitCatatData');
+                if (storedData) {
+                    this.data = JSON.parse(storedData);
+                } else {
+                    // Initialize with sample data if empty
+                    this.createSampleData();
+                }
+            },
+
+            // Create sample data for demo purpose
+            createSampleData: function() {
+                const now = new Date();
+                
+                // Sample data for demo
+                this.data = {
+                    entries: [
+                        {
+                            id: now.getTime(),
+                            jumlahTandan: 15,
+                            lokasi: 'blok-a',
+                            timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString() // 2 hours ago
+                        },
+                        {
+                            id: now.getTime() - 100,
+                            jumlahTandan: 9,
+                            lokasi: 'blok-c',
+                            timestamp: new Date(now.getTime() - 4 * 60 * 60 * 1000).toISOString() // 4 hours ago
+                        },
+                        {
+                            id: now.getTime() - 1000,
+                            jumlahTandan: 20,
+                            lokasi: 'blok-b',
+                            timestamp: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString() // 1 day ago
+                        },
+                        {
+                            id: now.getTime() - 2000,
+                            jumlahTandan: 7,
+                            lokasi: 'blok-a',
+                            timestamp: new Date(now.getTime() - 26 * 60 * 60 * 1000).toISOString() // 1 day and 2 hours ago
+                        },
+                        {
+                            id: now.getTime() - 3000,
+                            jumlahTandan: 12,
+                            lokasi: 'blok-d',
+                            timestamp: new Date(now.getTime() - 28 * 60 * 60 * 1000).toISOString() // 1 day and 4 hours ago
+                        },
+                        {
+                            id: now.getTime() - 4000,
+                            jumlahTandan: 18,
+                            lokasi: 'blok-c',
+                            timestamp: new Date(now.getTime() - 48 * 60 * 60 * 1000).toISOString() // 2 days ago
+                        },
+                        {
+                            id: now.getTime() - 5000,
+                            jumlahTandan: 11,
+                            lokasi: 'blok-b',
+                            timestamp: new Date(now.getTime() - 50 * 60 * 60 * 1000).toISOString() // 2 days and 2 hours ago
+                        }
+                    ]
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('sawitCatatData', JSON.stringify(this.data));
+            },
+
+            // Group entries by day
+            groupEntriesByDay: function() {
+                const groupedData = {};
+                
+                this.data.entries.forEach(entry => {
+                    const date = new Date(entry.timestamp);
+                    const dateKey = date.toLocaleDateString('id-ID');
+                    
+                    if (!groupedData[dateKey]) {
+                        groupedData[dateKey] = [];
+                    }
+                    
+                    groupedData[dateKey].push(entry);
+                });
+                
+                // Convert to array sorted by date (newest first)
+                return Object.entries(groupedData)
+                    .map(([date, entries]) => ({
+                        date,
+                        entries,
+                        // Sort entries by time within each day (newest first)
+                        sortedEntries: entries.sort((a, b) => 
+                            new Date(b.timestamp) - new Date(a.timestamp)
+                        )
+                    }))
+                    .sort((a, b) => {
+                        // Sort days by date (newest first)
+                        const dateA = new Date(a.entries[0].timestamp);
+                        const dateB = new Date(b.entries[0].timestamp);
+                        return dateB - dateA;
+                    });
+            },
+
+            // Get human-readable day label
+            getDayLabel: function(dateStr) {
+                const today = new Date().toLocaleDateString('id-ID');
+                const yesterday = new Date(Date.now() - 86400000).toLocaleDateString('id-ID');
+                const twoDaysAgo = new Date(Date.now() - 86400000 * 2).toLocaleDateString('id-ID');
+                
+                if (dateStr === today) {
+                    return 'Hari Ini';
+                } else if (dateStr === yesterday) {
+                    return 'Kemarin';
+                } else if (dateStr === twoDaysAgo) {
+                    return '2 Hari Lalu';
+                } else {
+                    // Format date for other days
+                    const date = new Date(dateStr.split('/').reverse().join('-'));
+                    return date.toLocaleDateString('id-ID', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                }
+            },
+
+            // Get human-readable location name
+            getLocationName: function(locationCode) {
+                const locations = {
+                    'blok-a': 'Blok A',
+                    'blok-b': 'Blok B',
+                    'blok-c': 'Blok C',
+                    'blok-d': 'Blok D'
+                };
+                return locations[locationCode] || locationCode;
+            },
+
+            // Format time from timestamp
+            formatTime: function(timestamp) {
+                const date = new Date(timestamp);
+                return date.toLocaleTimeString('id-ID', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            },
+
+            // Get entries from the last week
+            getWeeklyEntries: function() {
+                const now = new Date();
+                const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                
+                return this.data.entries.filter(entry => 
+                    new Date(entry.timestamp) >= oneWeekAgo
+                );
+            },
+
+            // Get entries from the current month
+            getMonthlyEntries: function() {
+                const now = new Date();
+                const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+                
+                return this.data.entries.filter(entry => 
+                    new Date(entry.timestamp) >= firstDayOfMonth
+                );
+            },
+
+            // Calculate average daily harvest
+            getAverageDailyHarvest: function() {
+                const entriesByDay = this.groupEntriesByDay();
+                
+                if (entriesByDay.length === 0) return 0;
+                
+                const totalTandans = entriesByDay.reduce((total, day) => {
+                    return total + day.entries.reduce((dayTotal, entry) => 
+                        dayTotal + entry.jumlahTandan, 0);
+                }, 0);
+                
+                return Math.round(totalTandans / entriesByDay.length);
+            },
+
+            // Get most frequent location
+            getMostFrequentLocation: function() {
+                const locationCounts = {};
+                
+                this.data.entries.forEach(entry => {
+                    locationCounts[entry.lokasi] = (locationCounts[entry.lokasi] || 0) + 1;
+                });
+                
+                // Find location with max count
+                let maxCount = 0;
+                let mostFrequentLocation = '';
+                
+                Object.entries(locationCounts).forEach(([location, count]) => {
+                    if (count > maxCount) {
+                        maxCount = count;
+                        mostFrequentLocation = location;
+                    }
+                });
+                
+                return this.getLocationName(mostFrequentLocation);
+            },
+
+            // Calculate total TBS
+            getTotalTBS: function(entries) {
+                return entries.reduce((total, entry) => total + entry.jumlahTandan, 0);
+            },
+
+            // Update the UI with current data
+            updateUI: function() {
+                // Update statistics
+                const weeklyEntries = this.getWeeklyEntries();
+                const monthlyEntries = this.getMonthlyEntries();
+                
+                document.getElementById('totalMingguIni').textContent = this.getTotalTBS(weeklyEntries);
+                document.getElementById('totalBulanIni').textContent = this.getTotalTBS(monthlyEntries);
+                document.getElementById('rataHarian').textContent = this.getAverageDailyHarvest();
+                document.getElementById('lokasiTerbanyak').textContent = this.getMostFrequentLocation();
+                
+                // Display entries grouped by day
+                this.displayEntries();
+            },
+
+            // Display entries in the UI
+            displayEntries: function() {
+                const container = document.getElementById('riwayatContainer');
+                container.innerHTML = ''; // Clear existing content
+                
+                const entriesByDay = this.groupEntriesByDay();
+                
+                // Get days to display based on current page size
+                const daysToDisplay = entriesByDay.slice(0, this.pageSize);
+                this.currentDisplayedDays = daysToDisplay.length;
+                
+                if (daysToDisplay.length === 0) {
+                    container.innerHTML = '<div class="col-span-3 text-center py-8 text-gray-500">Belum ada data panen. Silakan tambahkan data panen baru.</div>';
+                    return;
+                }
+                
+                // Display each day's entries
+                daysToDisplay.forEach(day => {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'mb-4 md:mb-0';
+                    
+                    const dayLabel = this.getDayLabel(day.date);
+                    
+                    let dayHTML = `
+                        <div class="text-sm font-medium text-gray-500 mb-2">${dayLabel}</div>
+                        <div class="bg-white rounded-lg border border-green-100 overflow-hidden">
+                    `;
+                    
+                    // Add entries for this day
+                    day.sortedEntries.forEach((entry, index) => {
+                        const isLast = index === day.sortedEntries.length - 1;
+                        dayHTML += `
+                            <div class="p-4 ${!isLast ? 'border-b border-green-100' : ''} flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="mr-4 text-sawit-green font-semibold">${entry.jumlahTandan} TBS</div>
+                                    <div class="text-gray-600 text-sm">${this.getLocationName(entry.lokasi)}</div>
+                                </div>
+                                <div class="text-gray-400 text-sm">${this.formatTime(entry.timestamp)}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    dayHTML += `</div>`;
+                    dayElement.innerHTML = dayHTML;
+                    container.appendChild(dayElement);
+                });
+                
+                // Hide the load more button if we've displayed all days
+                if (this.currentDisplayedDays >= entriesByDay.length) {
+                    document.getElementById('loadMoreButton').classList.add('hidden');
+                    document.getElementById('loadMoreDesktopButton').classList.add('hidden');
+                } else {
+                    document.getElementById('loadMoreButton').classList.remove('hidden');
+                    document.getElementById('loadMoreDesktopButton').classList.remove('hidden');
+                }
+            },
+
+            // Load more entries
+            loadMoreEntries: function() {
+                this.pageSize += 3; // Show 3 more days
+                this.displayEntries();
+            }
+        };
+
+        // Initialize the app when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            sawitCatatApp.init();
+        });
+    </script>
 </body>
 </html>

@@ -124,25 +124,8 @@
                 <!-- Recent Activity (Desktop Only) -->
                 <div class="hidden md:block bg-white rounded-lg shadow-md p-6 mb-6">
                     <h3 class="text-lg font-semibold text-sawit-green mb-3">Aktivitas Terakhir</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between border-b border-gray-100 pb-2">
-                            <div>
-                                <p class="font-medium">9 TBS - Blok C</p>
-                                <p class="text-xs text-gray-500">Hari ini, 07:30</p>
-                            </div>
-                            <span class="text-xs bg-green-100 text-sawit-green px-2 py-1 rounded flex items-center">
-                                Tersimpan
-                            </span>
-                        </div>
-                        <div class="flex justify-between border-b border-gray-100 pb-2">
-                            <div>
-                                <p class="font-medium">15 TBS - Blok A</p>
-                                <p class="text-xs text-gray-500">Hari ini, 09:45</p>
-                            </div>
-                            <span class="text-xs bg-green-100 text-sawit-green px-2 py-1 rounded flex items-center">
-                                Tersimpan
-                            </span>
-                        </div>
+                    <div id="recentActivities" class="space-y-3">
+                        <!-- Recent activities will be filled by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -188,11 +171,134 @@
     </nav>
 
     <script>
+        // Data model for the app
+        const sawitCatatApp = {
+            // Initialize the app
+            init: function() {
+                // Load data from localStorage or initialize if not exists
+                this.loadData();
+                // Update recent activities
+                this.updateRecentActivities();
+            },
+
+            // Load data from localStorage
+            loadData: function() {
+                const storedData = localStorage.getItem('sawitCatatData');
+                if (storedData) {
+                    this.data = JSON.parse(storedData);
+                } else {
+                    // Initialize with empty data
+                    this.data = {
+                        entries: []
+                    };
+                    this.saveData();
+                }
+            },
+
+            // Save data to localStorage
+            saveData: function() {
+                localStorage.setItem('sawitCatatData', JSON.stringify(this.data));
+            },
+
+            // Add a new entry
+            addEntry: function(jumlahTandan, lokasi) {
+                const entry = {
+                    id: Date.now(), // Use timestamp as unique ID
+                    jumlahTandan: parseInt(jumlahTandan),
+                    lokasi: lokasi,
+                    timestamp: new Date().toISOString()
+                };
+                
+                this.data.entries.unshift(entry); // Add to beginning of array
+                this.saveData();
+                return entry;
+            },
+
+            // Get human-readable location name
+            getLocationName: function(locationCode) {
+                const locations = {
+                    'blok-a': 'Blok A',
+                    'blok-b': 'Blok B',
+                    'blok-c': 'Blok C',
+                    'blok-d': 'Blok D'
+                };
+                return locations[locationCode] || locationCode;
+            },
+
+            // Get recent entries (last 3)
+            getRecentEntries: function() {
+                return this.data.entries.slice(0, 3);
+            },
+
+            // Format date and time
+            formatDateTime: function(isoString) {
+                const date = new Date(isoString);
+                const today = new Date().toLocaleDateString('id-ID');
+                
+                let dateStr;
+                if (date.toLocaleDateString('id-ID') === today) {
+                    dateStr = 'Hari ini';
+                } else {
+                    dateStr = date.toLocaleDateString('id-ID', { 
+                        day: 'numeric', 
+                        month: 'long'
+                    });
+                }
+                
+                const timeStr = date.toLocaleTimeString('id-ID', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                return `${dateStr}, ${timeStr}`;
+            },
+
+            // Update recent activities list
+            updateRecentActivities: function() {
+                const activitiesContainer = document.getElementById('recentActivities');
+                if (!activitiesContainer) return;
+                
+                // Clear existing content
+                activitiesContainer.innerHTML = '';
+                
+                // Get recent entries
+                const recentEntries = this.getRecentEntries();
+                
+                if (recentEntries.length === 0) {
+                    activitiesContainer.innerHTML = '<p class="text-gray-500 text-sm italic">Belum ada aktivitas pencatatan.</p>';
+                    return;
+                }
+                
+                // Create activity items
+                recentEntries.forEach(entry => {
+                    const activityItem = document.createElement('div');
+                    activityItem.className = 'flex justify-between border-b border-gray-100 pb-2';
+                    activityItem.innerHTML = `
+                        <div>
+                            <p class="font-medium">${entry.jumlahTandan} TBS - ${this.getLocationName(entry.lokasi)}</p>
+                            <p class="text-xs text-gray-500">${this.formatDateTime(entry.timestamp)}</p>
+                        </div>
+                        <span class="text-xs bg-green-100 text-sawit-green px-2 py-1 rounded flex items-center">
+                            Tersimpan
+                        </span>
+                    `;
+                    activitiesContainer.appendChild(activityItem);
+                });
+            }
+        };
+
+        // Function to save data
         function simpanData() {
             const jumlahTandan = document.getElementById('jumlahTandan').value;
             const lokasi = document.getElementById('lokasi').value;
             
             if (jumlahTandan && lokasi) {
+                // Add entry to data model
+                sawitCatatApp.addEntry(jumlahTandan, lokasi);
+                
+                // Update recent activities
+                sawitCatatApp.updateRecentActivities();
+                
                 // Show toast notification
                 const toast = document.getElementById('toast');
                 toast.classList.remove('hidden');
@@ -205,6 +311,11 @@
                 }, 3000);
             }
         }
+
+        // Initialize the app when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            sawitCatatApp.init();
+        });
     </script>
 </body>
 </html>

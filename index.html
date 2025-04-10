@@ -38,7 +38,7 @@
                 <!-- Total Panen Hari Ini -->
                 <div class="bg-white rounded-lg shadow-md p-6 mb-6 border-l-4 border-sawit-green">
                     <h2 class="text-gray-600 text-sm mb-1">Total Panen Hari Ini</h2>
-                    <p class="text-4xl font-bold text-sawit-green">24 <span class="text-xl">Tandan</span></p>
+                    <p class="text-4xl font-bold text-sawit-green"><span id="totalHariIni">0</span> <span class="text-xl">Tandan</span></p>
                 </div>
 
                 <!-- Tombol Catat Panen -->
@@ -67,15 +67,15 @@
                     <div class="hidden md:block">
                         <div class="grid grid-cols-3 gap-4 mb-4">
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
-                                <p class="text-3xl font-bold text-sawit-green">127</p>
+                                <p class="text-3xl font-bold text-sawit-green" id="totalMingguDesktop">0</p>
                                 <p class="text-sm text-gray-500">Total Tandan</p>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
-                                <p class="text-3xl font-bold text-sawit-yellow">4</p>
+                                <p class="text-3xl font-bold text-sawit-yellow" id="totalLokasiDesktop">0</p>
                                 <p class="text-sm text-gray-500">Lokasi Blok</p>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
-                                <p class="text-3xl font-bold text-sawit-green">5</p>
+                                <p class="text-3xl font-bold text-sawit-green" id="hariKerjaDesktop">0</p>
                                 <p class="text-sm text-gray-500">Hari Kerja</p>
                             </div>
                         </div>
@@ -84,19 +84,19 @@
                             <h3 class="font-medium text-gray-700 mb-2">Distribusi Panen per Blok</h3>
                             <div class="grid grid-cols-4 gap-2">
                                 <div class="bg-white p-2 rounded border border-gray-200">
-                                    <p class="text-xl font-bold text-sawit-green">45</p>
+                                    <p class="text-xl font-bold text-sawit-green" id="blokATotalDesktop">0</p>
                                     <p class="text-xs text-gray-500">Blok A</p>
                                 </div>
                                 <div class="bg-white p-2 rounded border border-gray-200">
-                                    <p class="text-xl font-bold text-sawit-green">32</p>
+                                    <p class="text-xl font-bold text-sawit-green" id="blokBTotalDesktop">0</p>
                                     <p class="text-xs text-gray-500">Blok B</p>
                                 </div>
                                 <div class="bg-white p-2 rounded border border-gray-200">
-                                    <p class="text-xl font-bold text-sawit-green">29</p>
+                                    <p class="text-xl font-bold text-sawit-green" id="blokCTotalDesktop">0</p>
                                     <p class="text-xs text-gray-500">Blok C</p>
                                 </div>
                                 <div class="bg-white p-2 rounded border border-gray-200">
-                                    <p class="text-xl font-bold text-sawit-green">21</p>
+                                    <p class="text-xl font-bold text-sawit-green" id="blokDTotalDesktop">0</p>
                                     <p class="text-xs text-gray-500">Blok D</p>
                                 </div>
                             </div>
@@ -106,15 +106,15 @@
                     <!-- Mobile version - simple stats -->
                     <div class="flex justify-between items-center text-center md:hidden">
                         <div class="flex-1">
-                            <p class="text-2xl font-bold text-sawit-green">127</p>
+                            <p class="text-2xl font-bold text-sawit-green" id="totalMingguMobile">0</p>
                             <p class="text-xs text-gray-500">Tandan</p>
                         </div>
                         <div class="flex-1">
-                            <p class="text-2xl font-bold text-sawit-yellow">4</p>
+                            <p class="text-2xl font-bold text-sawit-yellow" id="totalLokasiMobile">0</p>
                             <p class="text-xs text-gray-500">Lokasi</p>
                         </div>
                         <div class="flex-1">
-                            <p class="text-2xl font-bold text-sawit-green">5</p>
+                            <p class="text-2xl font-bold text-sawit-green" id="hariKerjaMobile">0</p>
                             <p class="text-xs text-gray-500">Hari Kerja</p>
                         </div>
                     </div>
@@ -152,5 +152,111 @@
             </a>
         </div>
     </nav>
+
+    <script>
+        // Data model for the app
+        const sawitCatatApp = {
+            // Initialize the app
+            init: function() {
+                // Load data from localStorage or initialize if not exists
+                this.loadData();
+                // Update the UI
+                this.updateUI();
+            },
+
+            // Load data from localStorage
+            loadData: function() {
+                const storedData = localStorage.getItem('sawitCatatData');
+                if (storedData) {
+                    this.data = JSON.parse(storedData);
+                } else {
+                    // Initialize with empty data
+                    this.data = {
+                        entries: []
+                    };
+                    this.saveData();
+                }
+            },
+
+            // Save data to localStorage
+            saveData: function() {
+                localStorage.setItem('sawitCatatData', JSON.stringify(this.data));
+            },
+
+            // Get today's entries
+            getTodayEntries: function() {
+                const today = new Date().toLocaleDateString('id-ID');
+                return this.data.entries.filter(entry => 
+                    new Date(entry.timestamp).toLocaleDateString('id-ID') === today
+                );
+            },
+
+            // Get entries from the last 7 days
+            getWeeklyEntries: function() {
+                const now = new Date();
+                const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                
+                return this.data.entries.filter(entry => 
+                    new Date(entry.timestamp) >= oneWeekAgo
+                );
+            },
+
+            // Get total of tandans
+            getTotalTandans: function(entries) {
+                return entries.reduce((total, entry) => total + entry.jumlahTandan, 0);
+            },
+
+            // Get unique locations
+            getUniqueLocations: function(entries) {
+                const locations = entries.map(entry => entry.lokasi);
+                return [...new Set(locations)].length;
+            },
+
+            // Get unique working days
+            getWorkingDays: function(entries) {
+                const days = entries.map(entry => 
+                    new Date(entry.timestamp).toLocaleDateString('id-ID')
+                );
+                return [...new Set(days)].length;
+            },
+
+            // Get total tandans by location
+            getTotalByLocation: function(entries, location) {
+                return entries
+                    .filter(entry => entry.lokasi === location)
+                    .reduce((total, entry) => total + entry.jumlahTandan, 0);
+            },
+
+            // Update the UI with current data
+            updateUI: function() {
+                const todayEntries = this.getTodayEntries();
+                const weeklyEntries = this.getWeeklyEntries();
+                
+                // Update today's total
+                document.getElementById('totalHariIni').textContent = this.getTotalTandans(todayEntries);
+                
+                // Update weekly stats - Mobile
+                document.getElementById('totalMingguMobile').textContent = this.getTotalTandans(weeklyEntries);
+                document.getElementById('totalLokasiMobile').textContent = this.getUniqueLocations(weeklyEntries);
+                document.getElementById('hariKerjaMobile').textContent = this.getWorkingDays(weeklyEntries);
+                
+                // Update weekly stats - Desktop
+                document.getElementById('totalMingguDesktop').textContent = this.getTotalTandans(weeklyEntries);
+                document.getElementById('totalLokasiDesktop').textContent = this.getUniqueLocations(weeklyEntries);
+                document.getElementById('hariKerjaDesktop').textContent = this.getWorkingDays(weeklyEntries);
+                
+                // Update distribution by block
+                document.getElementById('blokATotalDesktop').textContent = this.getTotalByLocation(weeklyEntries, 'blok-a');
+                document.getElementById('blokBTotalDesktop').textContent = this.getTotalByLocation(weeklyEntries, 'blok-b');
+                document.getElementById('blokCTotalDesktop').textContent = this.getTotalByLocation(weeklyEntries, 'blok-c');
+                document.getElementById('blokDTotalDesktop').textContent = this.getTotalByLocation(weeklyEntries, 'blok-d');
+            }
+        };
+
+        // Initialize the app when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            sawitCatatApp.init();
+        });
+    </script>
 </body>
 </html>
